@@ -4,7 +4,7 @@ import java.lang.Math;
 
 public class AutomatonTest
 {
-   Random numGen = new Random();
+   private Random numGen = new Random();
    
    private static final int UPPER_BOUND = 100;
    private static final int GRID_SIZE = 49;
@@ -15,7 +15,7 @@ public class AutomatonTest
    private int[][] grid = new int[GRID_SIZE][GRID_SIZE];  
    
    // fills grid with entries in accordance with the results of the random number generator
-   public void populateGrid() 
+   private void populateGrid() 
    {
       int[][] fillGrid = new int[GRID_SIZE][GRID_SIZE]; 
       
@@ -40,7 +40,7 @@ public class AutomatonTest
       this.grid = fillGrid;
    }
    
-   public void populateGridStatic()
+   private void populateGridStatic()
    {
       int[][] fillGrid = new int[GRID_SIZE][GRID_SIZE]; 
 
@@ -61,7 +61,8 @@ public class AutomatonTest
       this.grid = fillGrid;
    }
    
-   public void populateGridFixed()
+   // Starting grid with fixed entries
+   private void populateGridFixed()
    {
       int[][] fillGrid = new int[GRID_SIZE][GRID_SIZE]; 
 
@@ -91,7 +92,8 @@ public class AutomatonTest
       this.grid = fillGrid;
    }
    
-   public void updateGrid() // meat of the class; changes values in accordance with rules
+   // Meat of the class; changes values in grid in accordance with rules
+   public void updateGrid() 
    {
       int[][] oldGrid = this.grid;
       int[][] newGrid = new int[GRID_SIZE][GRID_SIZE];
@@ -109,7 +111,8 @@ public class AutomatonTest
       this.grid = Arrays.copyOf(newGrid, newGrid.length);
    }
    
-   public int applyRules(int[][] inputGrid, int liveNeighbors, int i, int j) // applies the rules
+   // Transforms grid
+   private int applyRules(int[][] inputGrid, int liveNeighbors, int i, int j) // applies the rules
    {
       if (inputGrid[i][j] == 1) 
       {
@@ -140,7 +143,8 @@ public class AutomatonTest
       return 0;
    }
    
-   public int[][] getNeighborhood(int[][] inputGrid, int i, int j) // creates neighborhood
+   // creates neighborhood
+   private int[][] getNeighborhood(int[][] inputGrid, int i, int j) 
    {
       int[][] neighborhood = new int[NEIGHBORHOOD_SIZE][];
       
@@ -159,7 +163,8 @@ public class AutomatonTest
       return neighborhood;
    }
    
-   public int getLiveNeighbors(int[][] neighborhood) // determines number of living neighbors
+   // determines number of living neighbors
+   private int getLiveNeighbors(int[][] neighborhood) 
    {
       int liveNeighbors = 0;
       
@@ -171,6 +176,7 @@ public class AutomatonTest
       return liveNeighbors;
    }
    
+   // For debugging in the console
    public void displayGrid()
    {
       for (int i = 0; i < this.grid.length; i++)

@@ -1,4 +1,4 @@
-// This program is a simple 2 dimensional celluar automaton displayed with a GUI
+// for console debugging
 
 public class AutomatonTestMain
 {
